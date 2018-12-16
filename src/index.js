@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import Resume from './pages/Resume'
+import AppRoute from './AppRoute'
 import * as serviceWorker from './serviceWorker'
 
 // bootstrap
@@ -21,7 +21,7 @@ let store = createStore(
 
 ReactDOM.render(
 <Provider store={store}>
-  <Resume />
+  <AppRoute />
 </Provider> , document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
