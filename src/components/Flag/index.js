@@ -3,17 +3,15 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import styled, { css } from 'styled-components'
 
-import { Title, Title1 } from '../../components/Font'
-import Box from '../../components/BoxComponent/Box'
-import BoxHeader from '../../components/BoxComponent/BoxHeader'
+import th from '../../assets/img/th.png'
+import en from '../../assets/img/en.png'
 
 import { selectLanguage } from '../../redux/action/action_language'
 
-class Proflie extends React.Component {
+class Flag extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-    }
+    this.state = {}
     this.seleceLanguage = this.seleceLanguage.bind(this)
   }
 
@@ -22,32 +20,28 @@ class Proflie extends React.Component {
   }
 
   render() {
-    let { store_language: { dictionary } } = this.props
-    return <Box>
-      <BoxHeader>
-        <Title bold>{dictionary.profile}</Title>
-      </BoxHeader>
-      <ProflieDetial>
-        <Image alt='' src='https://goo.gl/KPtDQL' />
-      </ProflieDetial>
-      <ProflieDetial>
-        <Title1>{dictionary.name}</Title1>
-      </ProflieDetial>
-    </Box>
+    return <MenuFlag>
+      <div onClick={() => this.seleceLanguage('th')}>
+        <ImageFlag alt='' src={th} />
+      </div>
+      <div onClick={() => this.seleceLanguage('en')} style={{ paddingLeft: '10px', }}>
+        <ImageFlag alt='' src={en} />
+      </div>
+    </MenuFlag>
   }
 }
 
-const ProflieDetial = styled.div`
+const MenuFlag = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  padding: 5px 0px;
 `
 
-const Image = styled.div`
-  width: 130px;
-  height: 130px;
+const ImageFlag = styled.div`
+  width: 20px;
+  height: 20px;
   border-radius 50%;
+  cursor: pointer;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -55,7 +49,6 @@ const Image = styled.div`
     && css`background-image: url(${props.src});`
   }
 `
-
 
 const mapStateToProps = (state) => {
   return {
@@ -69,4 +62,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Proflie)
+export default connect(mapStateToProps, mapDispatchToProps)(Flag)
